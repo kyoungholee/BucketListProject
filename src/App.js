@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './App.css';
 import TodoBoard from './component/TodoBoard';
 import Todoitem from "./component/TodoItem";
+//import style from "style-components";
 
 
 //1. 인풋창이 있고 버튼 만든다.
@@ -18,6 +19,15 @@ import Todoitem from "./component/TodoItem";
 function App() {
 
   const [todos, setTodos] = useState([])
+
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = ('0' + (today.getMonth() + 1)).slice(-2);
+  let day = ('0' + today.getDate()).slice(-2);
+
+  let dateString = year + '-' + month  + '-' + day;
+
+  console.log(dateString);
 
   const addTodo = (text) => {
     let id = 1;
@@ -36,34 +46,42 @@ function App() {
     setTodos(updatedTodos);
   }
   
-  const completeTodo = (id) => {
-    let updatedTodos = todos.map((todo)  => {
+  //완료 시  지우는 역할 
+  // const completeTodo = (id) => {
+  //   let updatedTodos = todos.map((todo)  => {
       
-      if(todo.id === id) {
-        todo.completeTodo = !todo.completeTodo
-      } 
-      return todo
-    })
-    setTodos(updatedTodos)
-  }
+  //     if(todo.id === id) {
+  //       todo.completeTodo = !todo.completeTodo
+  //     } 
+  //     return todo
+  //   })
+  //   setTodos(updatedTodos)
+  // }
 
   //딱 한번 마운팅 될때만 useEffect가 찍힌다 
-  useEffect(() => {
-    console.log('리스트 변화!!');
-  },[]);
+  //useEffect(() => {
+   // console.log('리스트 변화!!');
+  //},[]);
 
   return (
-    <div>
-      <h1>TodoList</h1>
-      <TodoBoard addTodo = {addTodo} />  {/**주석임 props를 나타냄   */}
+    <div className="bucketList">
+      <h1 className="title">BucketList </h1>
+
+      <h2> 시간 넣기</h2>
+
+      <h3>내가 죽기 전에 꼭해야 할 일 state 개</h3>
+      <hr />
+      <TodoBoard className = "add_TodoList" addTodo = {addTodo} />  {/**주석임 props를 나타냄   */}
       {todos.map((todo) => {
         return(
-          <Todoitem  key = {todo.id}removeTodo = {removeTodo} completeTodo = {completeTodo} todo = {todo} />
+         
+          <Todoitem  removeTodo = {removeTodo}  todo = {todo} key = {todo.id} />
           
         )
       })}
     </div>
   );
 }
+
 
 export default App;

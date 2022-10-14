@@ -2,4 +2,62 @@
   width: 300px;
   height: 50px;
   border: 1px solid lightblue;
+
+}
+.bucketList {
+  max-width: 600px;
+  min-height: 90vh;
+  background-color: #fff;
+  padding: 16px;
+  margin: 34px auto;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.title {
+  color: skyblue;
+  font-size: 44px;
+  text-align: center;
+}
+
+
+
+/*TodoBoard.jsx 파일 창 */
+.todo-input {
+  background-color: #fff;
+  font-size: 18px;
+  width:  260px;
+  height: 34px;
+  margin: 20px auto;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+
+.todo-addButton{
+  border: 1px solid black;
+  font-size: 19px;
+  height: 37px;
+  margin-left: 4px;
+
+}
+.add_TodoList {
+  
+}
+
+.todo-form {
+  text-align: center;
+}
+
+.todo-row{
+  justify-content:flex-start;
+  font-size: 24px;
+  display: flex;
+  height: 100%;
+  margin-top : 20px;
+
+}
+
+.icon{
+  margin-top: 4px;
 }
